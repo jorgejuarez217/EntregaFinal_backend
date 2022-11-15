@@ -1,0 +1,33 @@
+<h3 style="margin:2rem 0;">  Productos disponibles:</h3>
+{{#if verProductos}}
+    <div class="card-deck"    style="display: inline-flex;flex-wrap: wrap;">  
+        {{#each verProductos}}
+        
+            <div class="card" id="card" style="width: 18rem;margin: 2rem;">
+                <img class="card-img-top" style="width: 18rem;height: 14rem;" src= {{this.thumbnail}}   alt= {{this.title}}>
+                <div class="card-body" >
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-text">{{this.description}}</p>
+                    <h4 class="card-text">{{this.price}}</h4>
+                    <input id={{this._id}} type="number" className='styleInput' 
+                        max={{this.stock}} min="1" 
+                       value="1">  
+
+                    <a  class="btn btn-primary addProduct" href="/carrito/productos/{{this._id}}" >agregar</a>
+                </div>
+            </div>
+            
+        {{/each}}  
+    </div>
+{{else }}
+    <p style="color: red;">No hay ningun producto :(</p>
+{{/if}}
+<script src="/js/carrito.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        new Carrito();
+    });   
+</script> 
+
+
+
